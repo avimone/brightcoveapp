@@ -95,17 +95,18 @@ public class MainActivity extends BrightcovePlayer {
 
               }
            });
+        eventEmitter.on(GoogleCastEventType.CAST_SESSION_STARTED, event -> {
+            // Connection Started
+        });
+
+        eventEmitter.on(GoogleCastEventType.CAST_SESSION_ENDED, event -> {
+            // Connection Ended
+        });
+
         chromeCast =  findViewById(R.id.cast);
         chromeCast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventEmitter.on(GoogleCastEventType.CAST_SESSION_STARTED, event -> {
-                    // Connection Started
-                });
-
-                eventEmitter.on(GoogleCastEventType.CAST_SESSION_ENDED, event -> {
-                    // Connection Ended
-                });
 
                 GoogleCastComponent googleCastComponent = new GoogleCastComponent.Builder(eventEmitter, MainActivity.this)
                         .setAutoPlay(true)

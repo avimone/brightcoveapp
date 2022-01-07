@@ -42,7 +42,25 @@
                 android:background="@drawable/back"
                 />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="18dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Demo Video"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S1 E1 - Demo Video"
+                    android:textSize="12sp"/>
+            </LinearLayout>
     </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"

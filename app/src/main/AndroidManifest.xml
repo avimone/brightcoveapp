@@ -12,6 +12,7 @@
         android:theme="@style/Theme.BrightcoveVideo">
         <activity android:name=".MainActivity"
                   android:supportsPictureInPicture="true"
+                  android:screenOrientation="landscape"
                   android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
