@@ -44,7 +44,7 @@ public class MainActivity extends BrightcovePlayer {
     public static final String FONT_AWESOME = "fontawesome-webfont.ttf";
     private Button playbackSpeed;
     private Button fforward;
-    private Button chromeCast;
+    private Button play;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class MainActivity extends BrightcovePlayer {
         BrightcoveMediaController mediaController = new BrightcoveMediaController(brightcoveVideoView, R.layout.my_media_controller);
         brightcoveVideoView.setMediaController(mediaController);
         brightcoveVideoView = (BrightcoveExoPlayerVideoView) findViewById(R.id.brightcove_video_view);
+
 
 
         EventEmitter eventEmitter = brightcoveVideoView.getEventEmitter();
@@ -84,6 +85,7 @@ public class MainActivity extends BrightcovePlayer {
                 throw new RuntimeException(s);
             }
         });
+        play =  findViewById(R.id.play);
 
         fforward =  findViewById(R.id.skip_ahead);
         fforward.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +97,67 @@ public class MainActivity extends BrightcovePlayer {
 
               }
            });
+
+
+        eventEmitter.on(EventType.PAUSE, new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+           Log.d("STATE","Paused");
+                // React to the event
+play.setBackgroundResource(R.drawable.play);
+            }
+        });
+
+        eventEmitter.on(EventType.PLAY, new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+                Log.d("STATE","Playing");
+                // React to the event
+                play.setBackgroundResource(R.drawable.pause);
+
+            }
+        });
+        eventEmitter.on(EventType.SEEK_TO, new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+                Log.d("STATE","Paused");
+                // React to the event
+                play.setBackgroundResource(R.drawable.pause);
+
+            }
+        });
+        eventEmitter.on(EventType.DID_EXIT_PICTURE_IN_PICTURE_MODE, new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+                Log.d("STATE","EXIT PIP");
+                // React to the event
+                play.setBackgroundResource(R.drawable.pause);
+            }
+        });
+        eventEmitter.on(EventType.DID_ENTER_PICTURE_IN_PICTURE_MODE, new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+                Log.d("STATE","EXIT PIP");
+                // React to the event
+                play.setBackgroundResource(R.drawable.pause);
+            }
+        });
+        eventEmitter.on(EventType.EXIT_PICTURE_IN_PICTURE_MODE, new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+                Log.d("STATE","EXIT PIP");
+                // React to the event
+                play.setBackgroundResource(R.drawable.pause);
+            }
+        });
+        eventEmitter.on(EventType.REWIND, new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+                Log.d("STATE","Paused");
+                // React to the event
+                play.setBackgroundResource(R.drawable.pause);
+            }
+        });
         eventEmitter.on(GoogleCastEventType.CAST_SESSION_STARTED, event -> {
             // Connection Started
         });
@@ -103,10 +166,6 @@ public class MainActivity extends BrightcovePlayer {
             // Connection Ended
         });
 
-        chromeCast =  findViewById(R.id.cast);
-        chromeCast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
                 GoogleCastComponent googleCastComponent = new GoogleCastComponent.Builder(eventEmitter, MainActivity.this)
                         .setAutoPlay(true)
@@ -114,8 +173,8 @@ public class MainActivity extends BrightcovePlayer {
 
                 //You can check if there is a session available
                 googleCastComponent.isSessionAvailable();
-            }
-        });
+
+
 
     }
 
@@ -125,7 +184,13 @@ public class MainActivity extends BrightcovePlayer {
         GoogleCastComponent.setUpMediaRouteButton(this, menu);
         return true;
     }
+    @Override
+    public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
+        PictureInPictureManager.getInstance().onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
+        play.setBackgroundResource(R.drawable.pause);
 
+    }
 
     public void configureThumbnailScrubber(BaseVideoView brightcoveVideoView) {
         Log.v(TAG, "Thumbnail Scrubbing is enabled, setting up the PreviewThumbnailController");
@@ -153,12 +218,9 @@ public class MainActivity extends BrightcovePlayer {
         // Set playback speed
         ((ExoPlayerVideoDisplayComponent) brightcoveVideoView.getVideoDisplay()).getExoPlayer().setPlaybackParameters(new PlaybackParameters(speed, 1.0f));
         // Set playback speed label
-        if(speedLabel.equals("2.0")){
-            playbackSpeed.setBackgroundResource(R.drawable.ic_baseline_looks_two_24);
-        }
-        if(speedLabel.equals("1.0")){
-            playbackSpeed.setBackgroundResource(R.drawable.ic_ps1_24);
-        }
+
+            playbackSpeed.setText(speedLabel+"x");
+
     }
 
 }

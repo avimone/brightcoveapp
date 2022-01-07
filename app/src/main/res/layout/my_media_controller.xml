@@ -53,11 +53,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Demo Video"
+                    android:textColor="#ffffff"
                     android:textSize="12sp"
                     android:textStyle="bold" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
                     android:text="S1 E1 - Demo Video"
                     android:textSize="12sp"/>
             </LinearLayout>
@@ -69,14 +71,6 @@
             android:layout_marginRight="38dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/cast"
-                style="@style/BorderlessButton"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
-                android:visibility="visible"
-                android:background="@drawable/cast"
-                />
 
         </LinearLayout>
 
@@ -106,12 +100,13 @@
             android:id="@id/play"
             style="@style/BorderlessButton"
                 android:layout_marginHorizontal="82dp"
-                android:layout_height="60dp"
-                android:layout_width="60dp"
+                android:layout_height="55dp"
+                android:layout_width="50dp"
                 android:adjustViewBounds="true"
-                android:textSize="70sp"
                 android:scaleType="centerInside"
-            android:layout_gravity="center"
+                android:textColor="#00000000"
+
+                android:layout_gravity="center"
             android:visibility="visible"
 
             android:text="@string/brightcove_controls_play"/>
@@ -185,14 +180,18 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
             <Button
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
                 android:minHeight="0dp"
-                android:minWidth="0dp"
                 android:visibility="visible"
                 android:id="@+id/playbackSpeed"
                 android:layout_marginRight="38dp"
-                android:background="@drawable/ic_ps1_24"
+                android:text="1x"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:background="@drawable/speedy"
                 style="@style/BorderlessButton"
 />
 
@@ -202,9 +201,10 @@
                 android:minHeight="0dp"
                 android:background="@drawable/captions"
                 android:layout_marginRight="38dp"
+                android:textSize="14sp"
 
                 android:layout_width="30dp"
-                android:layout_height="25dp"
+                android:layout_height="27dp"
                 android:text="@string/brightcove_controls_captions"
                 android:visibility="visible" />
             <Button
@@ -214,6 +214,9 @@
                 android:layout_marginRight="38dp"
                 android:layout_width="30dp"
                 android:layout_height="25dp"
+                android:textColor="#00000000"
+                android:textSize="14sp"
+
                 android:text="@string/brightcove_controls_rewind"
                 android:minHeight="0dp"
      />
@@ -223,7 +226,10 @@
                 android:background="@drawable/fullscreen"
                 android:layout_marginRight="38dp"
                 android:text="@string/brightcove_controls_full_screen"
-            android:minHeight="0dp"
+                android:minHeight="0dp"
+                android:textColor="#00000000"
+                android:textSize="14sp"
+
                 android:layout_width="30dp"
                 android:layout_height="25dp"
                 android:visibility="visible" />

@@ -7,6 +7,7 @@
     <string name="brightcove_controls_captions"></string>
     <string name="brightcove_controls_picture_in_picture"></string>
     <string name="brightcove_picture_in_picture"></string>
+    <string name="cast_receiver_app_id">4F8B3483</string>
 
     <string name="brightcove_controls_full_screen"></string>
     <string name="brightcove_controls_fast_forward"></string>
