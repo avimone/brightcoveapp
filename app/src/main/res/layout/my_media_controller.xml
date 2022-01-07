@@ -230,15 +230,13 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:indeterminateOnly="false"
         android:layout_marginTop="12dp"
-
+        android:secondaryProgressTint="#ffffff"
         android:layout_marginBottom="12dp"
         android:thumb="@drawable/seekbar_thumb_shape"
         android:progressDrawable="@drawable/seekbar_progress_style"
         android:thumbOffset="0dp"
         android:splitTrack="false"
-        android:thumbTint="@color/red"
         android:visibility="gone"
         android:maxHeight="8dp"
     />

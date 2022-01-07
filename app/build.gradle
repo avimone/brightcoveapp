@@ -41,6 +41,7 @@ dependencies {
     implementation "com.brightcove.player:android-thumbnail-plugin:6.13.0"
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation "com.brightcove.player:android-cast-plugin:6.16.0"
+    implementation 'androidx.mediarouter:mediarouter:1.1.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

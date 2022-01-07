@@ -18,9 +18,20 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="com.brightcove.cast.DefaultOptionsProvider.NOTIFICATION_TARGET_ACTIVITY_CLASS_NAME"
-                android:value="com.brightcove.cast.BrightcoveControllerActivity" />
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+            android:value="com.brightcove.cast.DefaultOptionsProvider" />
+        <meta-data
+            android:name="com.brightcove.cast.DefaultOptionsProvider.EXPANDED_CONTROLLER_ACTIVITY_CLASS_NAME"
+            android:value="com.brightcove.cast.DefaultExpandedControllerActivity" />
+        <meta-data
+            android:name="com.brightcove.cast.DefaultOptionsProvider.NOTIFICATION_TARGET_ACTIVITY_CLASS_NAME"
+            android:value="com.brightcove.cast.DefaultExpandedControllerActivity" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

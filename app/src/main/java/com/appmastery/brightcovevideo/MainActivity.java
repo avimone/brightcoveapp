@@ -3,6 +3,7 @@ package com.appmastery.brightcovevideo;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.mediarouter.app.MediaRouteButton;
 
 import android.content.res.Configuration;
 import android.graphics.Typeface;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brightcove.cast.GoogleCastComponent;
+import com.brightcove.cast.GoogleCastEventType;
 import com.brightcove.player.analytics.Analytics;
 import com.brightcove.player.display.ExoPlayerVideoDisplayComponent;
 import com.brightcove.player.edge.Catalog;
@@ -33,6 +35,8 @@ import com.brightcove.player.view.BaseVideoView;
 import com.brightcove.player.view.BrightcoveExoPlayerVideoView;
 import com.brightcove.player.view.BrightcovePlayer;
 import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.gms.cast.framework.CastButtonFactory;
+import com.google.android.gms.cast.framework.CastContext;
 
 import java.net.URISyntaxException;
 
@@ -40,6 +44,7 @@ public class MainActivity extends BrightcovePlayer {
     public static final String FONT_AWESOME = "fontawesome-webfont.ttf";
     private Button playbackSpeed;
     private Button fforward;
+    private Button chromeCast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +95,26 @@ public class MainActivity extends BrightcovePlayer {
 
               }
            });
+        chromeCast =  findViewById(R.id.cast);
+        chromeCast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventEmitter.on(GoogleCastEventType.CAST_SESSION_STARTED, event -> {
+                    // Connection Started
+                });
 
+                eventEmitter.on(GoogleCastEventType.CAST_SESSION_ENDED, event -> {
+                    // Connection Ended
+                });
+
+                GoogleCastComponent googleCastComponent = new GoogleCastComponent.Builder(eventEmitter, MainActivity.this)
+                        .setAutoPlay(true)
+                        .build();
+
+                //You can check if there is a session available
+                googleCastComponent.isSessionAvailable();
+            }
+        });
 
     }
 
