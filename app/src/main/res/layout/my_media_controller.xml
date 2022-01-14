@@ -71,6 +71,8 @@
             android:layout_marginRight="38dp"
             android:orientation="horizontal">
 
+            <!-- The minicontroller widget used to control playback on a cast device. -->
+
 
         </LinearLayout>
 
@@ -196,7 +198,7 @@
 />
 
             <Button
-                android:id="@id/captions"
+                android:id="@+id/captions_custom"
                 style="@style/BorderlessButton"
                 android:minHeight="0dp"
                 android:background="@drawable/captions"
